@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head/>
+<h:body>
+    <h1>Page of <i>#{lecturerInfo.lecturer.firstName} #{lecturerInfo.lecturer.lastName}</i></h1>
+    <h:link outcome="lecturer-manage">Go back</h:link>
+    <ul>
+        <ui:repeat value="#{lecturerInfo.lecturer.courseList}" var="course">
+        <li>
+            <h:link
+                outcome="#{'course-manage?courseId='.concat(course.id)}"
+                value="#{course.courseName}"/>
+        </li>
+        </ui:repeat>
+    </ul>
+    <h:form>
+        <h:inputText value="#{lecturerInfo.course.courseName}" required="true">
+            <f:passThroughAttribute name="placeholder" value="Enter new course name" />
+        </h:inputText>
+        <h:commandButton
+                value="Add course for lecturer"
+                actionListener="#{lecturerInfo.createCourse}"
+                action="#{'lecturer-info?faces-redirect=true&amp;lecturerId='.concat(lecturerInfo.lecturer.id)}">
+            <f:param name="lecturerId" value="#{lecturerInfo.lecturer.id}"/>
+        </h:commandButton>
+    </h:form>
+</h:body>
+</html>

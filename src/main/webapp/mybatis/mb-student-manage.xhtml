@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h1>Student management MyBatis</h1>
+    <h:link outcome="mb-index">Go back</h:link>
+    <ol>
+        <ui:repeat value="#{myBatisStudents.students}" var="student">
+            <li>#{student.firstName} #{student.lastName}</li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{myBatisStudents.student.firstName}" required="true">
+            <f:passThroughAttribute name="placeholder" value="Enter student name" />
+        </h:inputText>
+        <h:inputText value="#{myBatisStudents.student.lastName}" required="true">
+            <f:passThroughAttribute name="placeholder" value="Enter student surname" />
+        </h:inputText>
+        <h:commandButton
+                value="Add student"
+                actionListener="#{myBatisStudents.createStudent}"
+                action="mb-student-manage?faces-redirect=true"/>
+    </h:form>
+</f:view>
+</html>

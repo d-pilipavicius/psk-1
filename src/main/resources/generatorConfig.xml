@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="FacultyDB" targetRuntime="MyBatis3Simple">
+        <jdbcConnection driverClass="org.h2.Driver"
+                        connectionURL="jdbc:h2:~/h2database/FacultyDB;AUTO_SERVER=TRUE"
+                        userId="sa"
+                        password="sa">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.example.psk_1.mybatis.model" targetProject="MAVEN"/>
+
+        <sqlMapGenerator targetPackage="com.example.psk_1.mybatis.xml" targetProject="MAVEN"/>
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.psk_1.mybatis.dao"
+                             targetProject="MAVEN"/>
+
+        <!--Tables-->
+        <table schema="PUBLIC" tableName="LECTURER">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC"/>
+        </table>
+
+        <table schema="public" tableName="student">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC"/>
+        </table>
+
+        <table schema="public" tableName="course">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC"/>
+        </table>
+
+        <table schema="public" tableName="student_course"/>
+    </context>
+</generatorConfiguration>

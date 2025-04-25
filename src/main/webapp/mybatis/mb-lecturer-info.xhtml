@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head/>
+<h:body>
+    <h1>Page of <i>#{myBatisLecturerInfo.lecturer.firstName} #{myBatisLecturerInfo.lecturer.lastName}</i></h1>
+    <h:link outcome="mb-lecturer-manage">Go back</h:link>
+    <ul>
+        <ui:repeat value="#{myBatisLecturerInfo.lecturerCourses}" var="course">
+            <li>
+                <h:link
+                    outcome="#{'mb-course-manage?courseId='.concat(course.id)}"
+                    value="#{course.courseName}"/>
+            </li>
+        </ui:repeat>
+    </ul>
+    <h:form>
+        <h:inputText value="#{myBatisLecturerInfo.course.courseName}" required="true">
+            <f:passThroughAttribute name="placeholder" value="Enter new course name" />
+        </h:inputText>
+        <h:commandButton
+                value="Add course for lecturer"
+                actionListener="#{myBatisLecturerInfo.createCourse}"
+                action="#{'mb-lecturer-info?faces-redirect=true&amp;lecturerId='.concat(myBatisLecturerInfo.lecturer.id)}">
+            <f:param name="lecturerId" value="#{myBatisLecturerInfo.lecturer.id}"/>
+        </h:commandButton>
+    </h:form>
+</h:body>
+</html>

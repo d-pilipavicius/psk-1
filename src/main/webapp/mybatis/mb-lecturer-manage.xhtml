@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h1>Lecturer management MyBatis</h1>
+    <h:link outcome="mb-index">Go back</h:link>
+    <ul>
+        <ui:repeat value="#{myBatisLecturers.lecturers}" var="lecturer">
+            <li>
+                <h:link outcome="mb-lecturer-info?lecturerId=#{lecturer.id}"
+                        value="#{lecturer.firstName} #{lecturer.lastName}"/>
+            </li>
+        </ui:repeat>
+    </ul>
+    <h:form>
+        <h:inputText value="#{myBatisLecturers.lecturer.firstName}" required="true">
+            <f:passThroughAttribute name="placeholder" value="Enter lecturer name" />
+        </h:inputText>
+        <h:inputText value="#{myBatisLecturers.lecturer.lastName}" required="true">
+            <f:passThroughAttribute name="placeholder" value="Enter lecturer surname" />
+        </h:inputText>
+        <h:commandButton
+                value="Add lecturer"
+                actionListener="#{myBatisLecturers.createLecturer}"
+                action="mb-lecturer-manage?faces-redirect=true"/>
+    </h:form>
+</f:view>
+</html>

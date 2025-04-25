@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head/>
+<h:body>
+    <h1>Editing course <i>#{courseInfo.course.courseName}</i></h1>
+    <h:link outcome="lecturer-info?lecturerId=#{courseInfo.course.lecturer.id}">Go back</h:link>
+    <h3>Added students</h3>
+    <h:form> <ul>
+        <ui:repeat value="#{courseInfo.course.studentList}" var="student">
+            <li>
+                #{student.firstName} #{student.lastName}
+                <h:commandLink
+                    actionListener="#{courseInfo.removeStudentFromCourse}"
+                    outcome="#{'course-manage?faces-redirect=true&amp;courseId='.concat(courseInfo.course.id)}"
+                    value="Remove">
+                    <f:param name="studentId" value="#{student.id}"/>
+                </h:commandLink>
+            </li>
+        </ui:repeat>
+    </ul> </h:form>
+    <h3>Add students</h3>
+    <h:form> <ul>
+        <ui:repeat value="#{courseInfo.students}" var="student">
+            <li>
+                #{student.firstName} #{student.lastName}
+                <h:commandLink
+                    actionListener="#{courseInfo.addStudentToCourse}"
+                    outcome="#{'course-manage?faces-redirect=true&amp;courseId='.concat(courseInfo.course.id)}"
+                    value="Add">
+                    <f:param name="studentId" value="#{student.id}"/>
+                </h:commandLink>
+            </li>
+        </ui:repeat>
+    </ul> </h:form>
+</h:body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head/>
+<h:body>
+    <h1>Editing course <i>#{myBatisCourseInfo.course.courseName}</i></h1>
+    <h:link outcome="mb-lecturer-info?lecturerId=#{myBatisCourseInfo.course.lecturerId}">Go back</h:link>
+    <h3>Added students</h3>
+    <h:form> <ul>
+        <ui:repeat value="#{myBatisCourseInfo.addedStudents}" var="student">
+            <li>
+                #{student.firstName} #{student.lastName}
+                <h:commandLink
+                    actionListener="#{myBatisCourseInfo.removeStudentFromCourse}"
+                    outcome="#{'mb-course-manage?faces-redirect=true&amp;courseId='.concat(myBatisCourseInfo.course.id)}"
+                    value="Remove">
+                    <f:param name="studentId" value="#{student.id}"/>
+                </h:commandLink>
+            </li>
+        </ui:repeat>
+    </ul> </h:form>
+    <h3>Add students</h3>
+    <h:form> <ul>
+        <ui:repeat value="#{myBatisCourseInfo.nonAddedStudents}" var="student">
+            <li>
+                #{student.firstName} #{student.lastName}
+                <h:commandLink
+                    actionListener="#{myBatisCourseInfo.addStudentToCourse}"
+                    outcome="#{'mb-course-manage?faces-redirect=true&amp;courseId='.concat(myBatisCourseInfo.course.id)}"
+                    value="Add">
+                    <f:param name="studentId" value="#{student.id}"/>
+                </h:commandLink>
+            </li>
+        </ui:repeat>
+    </ul> </h:form>
+</h:body>
+</html>
