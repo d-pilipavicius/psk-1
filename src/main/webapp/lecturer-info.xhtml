@@ -14,7 +14,7 @@
         <li>
             <h:link
                 outcome="#{'course-manage?courseId='.concat(course.id)}"
-                value="#{course.courseName}"/>
+                value="#{course.courseName} (students in course: #{course.studentList.size()})"/>
         </li>
         </ui:repeat>
     </ul>
