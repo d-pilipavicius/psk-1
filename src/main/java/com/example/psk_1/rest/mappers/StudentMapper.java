@@ -15,6 +15,7 @@ public class StudentMapper {
         studentDTO.setFirstName(student.getFirstName());
         studentDTO.setLastName(student.getLastName());
         studentDTO.setStudentId(student.getStudentId());
+        studentDTO.setOptLockVersion(student.getOptLockVersion());
 
         return studentDTO;
     }
@@ -26,6 +27,7 @@ public class StudentMapper {
         student.setFirstName(studentDTO.getFirstName());
         student.setLastName(studentDTO.getLastName());
         student.setStudentId(studentDTO.getStudentId());
+        student.setOptLockVersion(studentDTO.getOptLockVersion());
 
         return student;
     }
@@ -37,6 +39,7 @@ public class StudentMapper {
         student.setFirstName(studentDTO.getFirstName());
         student.setLastName(studentDTO.getLastName());
         student.setStudentId(studentDTO.getStudentId());
+        student.setOptLockVersion(studentDTO.getOptLockVersion());
 
         return student;
     }

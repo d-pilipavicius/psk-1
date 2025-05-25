@@ -8,4 +8,5 @@ public class UpdateStudentDto {
     private Integer studentId;
     private String firstName;
     private String lastName;
+    private int optLockVersion;
 }

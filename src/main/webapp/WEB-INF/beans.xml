@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+        bean-discovery-mode="annotated">
+
+    <alternatives>
+       <!-- <class>com.example.psk_1.service.NotRandomStudentIdGenerator</class> -->
+    </alternatives>
+    <interceptors>
+        <class>com.example.psk_1.interceptors.TimingInterceptor</class>
+    </interceptors>
+    <decorators>
+        <class>com.example.psk_1.decorators.GeneratorDecorator</class>
+    </decorators>
+</beans>

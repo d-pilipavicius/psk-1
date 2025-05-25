@@ -42,4 +42,8 @@ public class Student {
 
     @ManyToMany
     private List<Course> courseList;
+
+    @Version
+    @Column(name= "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
 }
