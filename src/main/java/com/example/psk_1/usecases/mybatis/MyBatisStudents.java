@@ -2,7 +2,7 @@ package com.example.psk_1.usecases.mybatis;
 
 import com.example.psk_1.mybatis.dao.StudentMapper;
 import com.example.psk_1.mybatis.model.Student;
-import com.example.psk_1.service.RandomStudentIdGenerator;
+import com.example.psk_1.service.IdGenerator;
 import lombok.Getter;
 import lombok.Setter;
 import org.mybatis.cdi.Transactional;
@@ -18,7 +18,7 @@ public class MyBatisStudents {
     private StudentMapper studentMapper;
 
     @Inject
-    private RandomStudentIdGenerator studentIdGenerator;
+    private IdGenerator studentIdGenerator;
 
     @Getter
     @Setter

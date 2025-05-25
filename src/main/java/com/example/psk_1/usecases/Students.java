@@ -2,6 +2,7 @@ package com.example.psk_1.usecases;
 
 import com.example.psk_1.entities.Student;
 import com.example.psk_1.persistence.StudentDAO;
+import com.example.psk_1.service.IdGenerator;
 import com.example.psk_1.service.RandomStudentIdGenerator;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,7 @@ public class Students {
     private StudentDAO studentDAO;
 
     @Inject
-    private RandomStudentIdGenerator studentIdGenerator;
+    private IdGenerator studentIdGenerator;
 
     @Getter @Setter
     private Student student = new Student();

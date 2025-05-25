@@ -1,0 +1,33 @@
+.tabs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  background-color: #1e1e1e; /* Darker shade for dark mode */
+  border-bottom: 1px solid #333;
+  z-index: 1000; /* Keep it above other elements */
+}
+
+.tab {
+  flex: 1;
+  padding: 14px 0;
+  text-align: center;
+  color: #ccc;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+}
+
+.tab:hover {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.tab.active {
+  background-color: #333;
+  color: #fff;
+  border-bottom: 2px solid #4a90e2;
+}
